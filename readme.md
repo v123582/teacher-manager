@@ -6,7 +6,8 @@ a teaching plan manager platform
 ## initial
 
 ```
-touch database/database.sqlite
+$ composer install
+$ touch database/database.sqlite
 ```
 
 ## before start
