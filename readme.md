@@ -13,12 +13,12 @@ $ touch database/database.sqlite
 ## before start
 
 ```
-php artisan migrate
+$ php artisan migrate
 ```
 
 
 ## how to start
 
 ```
-php artisan serve
+$ php artisan serve
 ```
