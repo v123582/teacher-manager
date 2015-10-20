@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	if (Auth::check())
+	{
+	    return 'The user is logged in...'; 
+	}
+	else{
+		return 'The user is logged out...'; 
+	}
+	
+    
 });
+
+Route::get('/auth/facebook', 'UserController@loginWithFacebook');
