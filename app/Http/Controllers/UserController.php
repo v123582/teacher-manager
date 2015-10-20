@@ -10,6 +10,17 @@ use Auth;
 
 class UserController extends Controller
 {
+/**
+     * loginWithFacebook
+     *
+     * @return Response
+     */
+    public function loginOut()
+    {
+        Auth::logout();  
+        return Redirect::to('/');      
+    }
+
     /**
      * loginWithFacebook
      *
@@ -52,9 +63,6 @@ class UserController extends Controller
             else{
                 echo 'login fail';
             }
-            //Var_dump
-            //display whole array.
-            dd($result);
 
 
         }
