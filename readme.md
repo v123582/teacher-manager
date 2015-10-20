@@ -20,5 +20,6 @@ $ php artisan migrate
 ## how to start
 
 ```
+$ composer install # if adding new vendor to composer.json 
 $ php artisan serve
 ```
