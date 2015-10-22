@@ -3,23 +3,20 @@ a teaching plan manager platform
 
 ## pre-install
 
+* composer
+* bower
+
 ## initial
 
 ```
-$ composer install
 $ touch database/database.sqlite
-```
-
-## before start
-
-```
 $ php artisan migrate
 ```
-
 
 ## how to start
 
 ```
+$ bower install # if adding new components to bower.json
 $ composer install # if adding new vendor to composer.json 
 $ php artisan serve
 ```
