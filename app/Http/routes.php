@@ -15,11 +15,14 @@ Route::get('/', function () {
     if (Auth::check())
     {
         $user = Auth::user();
-        return View::make('index')->with('name', $user->name);
+        $data = array(
+		    'name'  => $user->name,
+		    'isAuth'  => 'true',
+		);
+        return View::make('index')->with($data);
     }
     else{
-        $user = Auth::user();
-        return View::make('index')->with('name', 'No');
+        return View::make('index')->with('isAuth', 'false');
     }
 });
 
