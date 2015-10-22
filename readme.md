@@ -4,8 +4,7 @@ a teaching plan manager platform
 ## pre-install
 
 * composer
-* [bower](http://bower.io/#install-bower)
-* * npm install -g bower
+* [bower](http://bower.io/)
 
 ## initial
 
