@@ -3,12 +3,14 @@ a teaching plan manager platform
 
 ## pre-install
 
-* composer
+* [git](https://git-scm.com/)
+* [composer](https://getcomposer.org/)
 * [bower](http://bower.io/)
 
 ## initial
 
 ```
+$ cp .env.example .env
 $ touch database/database.sqlite
 $ php artisan migrate
 ```
