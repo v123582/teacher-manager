@@ -4,20 +4,22 @@ a teaching plan manager platform
 ## pre-install
 
 * [git](https://git-scm.com/)
-* [composer](https://getcomposer.org/)
-* [bower](http://bower.io/)
-* [php5-sqlite]()
-
+* [php]()
+* [php-sqlite]()
 ```
 sudo apt-get install php5-sqlite
 ```
+* [composer](https://getcomposer.org/)
+* [node.js]()
+* [npm]()
+* [bower](http://bower.io/)
 
 ## initial
 
 ```
 $ composer install
-$ php artisan key:generate
-$ cp .env.example .env # check your php app key in this file
+$ cp .env.example .env 
+$ php artisan key:generate # check your php app key in .env file
 $ touch database/database.sqlite
 $ php artisan migrate
 ```
