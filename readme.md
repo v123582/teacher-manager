@@ -10,7 +10,9 @@ a teaching plan manager platform
 ## initial
 
 ```
-$ cp .env.example .env
+$ composer install
+$ php artisan key:generate
+$ cp .env.example .env # check your php app key in this file
 $ touch database/database.sqlite
 $ php artisan migrate
 ```
