@@ -6,6 +6,11 @@ a teaching plan manager platform
 * [git](https://git-scm.com/)
 * [composer](https://getcomposer.org/)
 * [bower](http://bower.io/)
+* [php5-sqlite]()
+
+```
+sudo apt-get install php5-sqlite
+```
 
 ## initial
 
