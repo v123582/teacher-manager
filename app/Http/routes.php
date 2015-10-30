@@ -36,5 +36,5 @@ Route::get('/file/{id}', 'FileController@show');
 Route::get('/file/create', 'FileController@create');
 Route::post('/file/create', 'FileController@store');
 Route::get('/file/update/{id}', 'FileController@edit');
-Route::post('/file/update', 'ExampleController@update');
+Route::post('/file/update', 'FileController@update');
 Route::post('/file/delete', 'ExampleController@destroy');

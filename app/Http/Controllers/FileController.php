@@ -63,9 +63,21 @@ class FileController extends Controller {
         $file->save();
 	}
 
+	/**
+	 * post('/file/update', 'ExampleController@update');
+	 * 
+	 * @param  Request $request
+	 * @return Response
+	 */
+	public function update(Request $request)
+	{
+		$file = File::find($request->id);
+		$file->name = $request->name;
+        $file->save();
+	}
+
 	// Route::get('/file/create', 'FileController@create');
 	// Route::get('/file/update/{id}', 'FileController@edit');
-	// Route::post('/file/update', 'ExampleController@update');
 	// Route::post('/file/delete', 'ExampleController@destroy');
 
 }
