@@ -76,17 +76,19 @@ class UserController extends Controller
             return redirect((string)$url);
         }
     }
-    
-    public function showuser(){
+
+    public function showUser()
+    {
         $user = User::all();
-        echo json_encode($user);
+        return json_decode($user);
     }
 
-    public function showuserid(Request $request){
-        // echo $request['id'];
-        $id =  $request->id;
-        $user = User::where('id', '=', $id)->first();
-        echo json_encode($user);
+    public function showUserid(Request $request)
+    {
+
+        $id = $request->id;
+        $user = User::find($id);
+        return json_encode($user);
     }
 
 }
