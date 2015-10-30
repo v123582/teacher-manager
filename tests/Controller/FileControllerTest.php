@@ -44,4 +44,26 @@ class ExampleTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
+    /**
+     * get('/file/{id}', 'FileController@show');
+     * 
+     * @return void
+     */
+    public function testShow()
+    {
+        $file = new File;
+        $file->user = 'test';
+        $file->name = 'test';
+        $file->subject = 'test';
+        $file->chapter = 'test';
+        $file->grade = 'test';
+        $file->topic = 'test';
+        $file->link = 'test';
+        $file->description = 'test';
+        $file->save();
+
+        $response = $this->call('GET', '/file/'.$file->id);
+        $this->assertEquals(200, $response->status());
+    }
+
 }
