@@ -76,8 +76,21 @@ class FileController extends Controller {
         $file->save();
 	}
 
+    /**
+     * post('/file/delete', 'ExampleController@destroy');
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function destroy(Request $request)
+    {
+
+        $example = File::find($request->id);
+        $example->delete();
+
+    }
+
 	// Route::get('/file/create', 'FileController@create');
 	// Route::get('/file/update/{id}', 'FileController@edit');
-	// Route::post('/file/delete', 'ExampleController@destroy');
 
 }

@@ -116,8 +116,34 @@ class ExampleTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
+    /**
+     * post('/file/delete', 'ExampleController@destroy');
+     * 
+     * @return void
+     */
+    public function testDelete()
+    {
+
+        $file = new File;
+        $file->user = 'test';
+        $file->name = 'test';
+        $file->subject = 'test';
+        $file->chapter = 'test';
+        $file->grade = 'test';
+        $file->topic = 'test';
+        $file->link = 'test';
+        $file->description = 'test';
+        $file->save();
+        
+        $params = [
+            'id' => $file->id,
+        ];
+
+        $response = $this->call('POST', '/file/delete', $params);
+        $this->assertEquals(200, $response->status());
+    }
+
     // Route::get('/file/create', 'FileController@create');
     // Route::get('/file/update/{id}', 'FileController@edit');
-    // Route::post('/file/delete', 'ExampleController@destroy');
 
 }
