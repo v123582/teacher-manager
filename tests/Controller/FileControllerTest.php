@@ -12,8 +12,8 @@ class ExampleTest extends TestCase
     use DatabaseMigrations;
     use DatabaseTransactions;
     /**
-     * Display a listing of the resource.
-     * get('/file', 'FileController@index')
+     * get('/file', 'FileController@index');
+     * 
      * @return void
      */
     public function testIndex()
@@ -27,26 +27,17 @@ class ExampleTest extends TestCase
      * Display a listing of the files.
      * @return void
      */
-    public function testList()
+    public function testShowAll()
     {
-        $file = new File;
-        $file->user = 'test';
-        $file->name = 'test';
-        $file->subject = 'test';
-        $file->chapter = 'test';
-        $file->grade = 'test';
-        $file->topic = 'test';
-        $file->link = 'test';
-        $file->description = 'test';
-        $file->save();
-
+        $files = File::all();
         $response = $this->call('GET', '/files');
         $this->assertEquals(200, $response->status());
+        $this->assertEquals(count($files), count(json_decode($response->getContent())));
     }
 
     /**
      * get('/file/{id}', 'FileController@show');
-     * 
+     * Display the specified file by id.
      * @return void
      */
     public function testShow()
@@ -64,11 +55,12 @@ class ExampleTest extends TestCase
 
         $response = $this->call('GET', '/file/'.$file->id);
         $this->assertEquals(200, $response->status());
+        $this->assertEquals($file->id, json_decode($response->getContent())->id);
     }
 
     /**
      * post('/file/create', 'FileController@store');
-     * 
+     * Store a newly created file in storage.
      * @return void
      */
     public function testStore()
@@ -84,13 +76,19 @@ class ExampleTest extends TestCase
             'description' => 'test',
         ];
 
+        $filesBefore = File::all();
+
         $response = $this->call('POST', '/file/create', $params);
-        $this->assertEquals(200, $response->status());
+        $this->assertEquals(302, $response->status());
+
+        $filesAfter = File::all();
+        $this->assertEquals(count($filesBefore)+1, count($filesAfter));
+        
     }
 
     /**
-     * post('/file/update', 'ExampleController@update');
-     * 
+     * post('/file/update', 'FileController@update');
+     * Update the specified file in storage.
      * @return void
      */
     public function testUpdate()
@@ -98,7 +96,7 @@ class ExampleTest extends TestCase
 
         $file = new File;
         $file->user = 'test';
-        $file->name = 'test';
+        $file->name = 'Alice';
         $file->subject = 'test';
         $file->chapter = 'test';
         $file->grade = 'test';
@@ -109,16 +107,26 @@ class ExampleTest extends TestCase
         
         $params = [
             'id' => $file->id,
-            'name' => 'Alice',
+            'user' => 'test',
+            'name' => 'Bob',
+            'subject' => 'test',
+            'chapter' => 'test',
+            'grade' => 'test',
+            'topic' => 'test',
+            'link' => 'test',
+            'description' => 'test',
         ];
 
         $response = $this->call('POST', '/file/update', $params);
-        $this->assertEquals(200, $response->status());
+        $this->assertEquals(302, $response->status());
+
+        $fileUpdated = File::find($file->id);
+        $this->assertEquals($params['name'], $fileUpdated->name);
     }
 
     /**
-     * post('/file/delete', 'ExampleController@destroy');
-     * 
+     * post('/file/delete', 'FileController@destroy');
+     * Remove the specified resource from storage.
      * @return void
      */
     public function testDelete()
@@ -139,8 +147,13 @@ class ExampleTest extends TestCase
             'id' => $file->id,
         ];
 
+        $filesBefore = File::all();
+
         $response = $this->call('POST', '/file/delete', $params);
-        $this->assertEquals(200, $response->status());
+        $this->assertEquals(302, $response->status());
+
+        $filesAfter = File::all();
+        $this->assertEquals(count($filesBefore)-1, count($filesAfter));
     }
 
     // Route::get('/file/create', 'FileController@create');
