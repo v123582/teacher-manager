@@ -66,4 +66,31 @@ class ExampleTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
+    /**
+     * post('/file/create', 'FileController@store');
+     * 
+     * @return void
+     */
+    public function testStore()
+    {
+        $params = [
+            'user' => 'test',
+            'name' => 'Bob',
+            'subject' => 'test',
+            'chapter' => 'test',
+            'grade' => 'test',
+            'topic' => 'test',
+            'link' => 'test',
+            'description' => 'test',
+        ];
+
+        $response = $this->call('POST', '/file/create', $params);
+        $this->assertEquals(200, $response->status());
+    }
+
+    // Route::get('/file/create', 'FileController@create');
+    // Route::get('/file/update/{id}', 'FileController@edit');
+    // Route::post('/file/update', 'ExampleController@update');
+    // Route::post('/file/delete', 'ExampleController@destroy');
+
 }

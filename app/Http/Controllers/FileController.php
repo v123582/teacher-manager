@@ -42,4 +42,30 @@ class FileController extends Controller {
 		return $file;
 	}
 
+
+	/**
+	 * post('/file/create', 'FileController@store');
+	 * 
+	 * @param  Request $request
+	 * @return Response
+	 */
+	public function store(Request $request)
+	{
+        $file = new File;
+        $file->user = $request->user;
+        $file->name = $request->name;
+        $file->subject = $request->subject;
+        $file->chapter = $request->chapter;
+        $file->grade = $request->grade;
+        $file->topic = $request->topic;
+        $file->link = $request->link;
+        $file->description = $request->description;
+        $file->save();
+	}
+
+	// Route::get('/file/create', 'FileController@create');
+	// Route::get('/file/update/{id}', 'FileController@edit');
+	// Route::post('/file/update', 'ExampleController@update');
+	// Route::post('/file/delete', 'ExampleController@destroy');
+
 }
