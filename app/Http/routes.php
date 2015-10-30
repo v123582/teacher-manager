@@ -31,6 +31,7 @@ Route::get('/auth/logout', 'UserController@loginOut');
 
 
 Route::get('/file', 'FileController@index');
+Route::get('/files', 'FileController@showAll');
 Route::get('/file/{id}', 'FileController@show');
 Route::get('/file/create', 'FileController@create');
 Route::post('/file/create', 'FileController@store');
