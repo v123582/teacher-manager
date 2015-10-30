@@ -77,18 +77,16 @@ class UserController extends Controller
         }
     }
 
+    // get('/users', 'UserController@showuserall');
     public function showUserall()
     {
         $user = User::all();
-        return json_decode($user);
     }
 
-    public function showUserone(Request $request)
+    // get('/user/{id}', 'UserController@showuserone');
+    public function showUserone(Request $request, $id)
     {
-
-        $id = $request->id;
         $user = User::find($id);
-        return json_encode($user);
     }
 
 }

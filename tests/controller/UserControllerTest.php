@@ -16,14 +16,11 @@ class ExampleTest extends TestCase
     public function testShowUserAll()
     {
 
-        $user = new User;
-        $user->name = 'test';
-        $user->email = 'test';
-        $user->password = bcrypt('test');
-        $user->save();
+        $users = User::all();
 
         $response = $this->call('GET', '/users');
         $this->assertEquals(200, $response->status());
+        $this->assertEquals(count($users), count(json_decode($response->getContent())));
 
     }  
 
@@ -37,9 +34,9 @@ class ExampleTest extends TestCase
         $user->password = bcrypt('test');
         $user->save();
 
-        $response = $this->call('GET', '/user/1');
+        $response = $this->call('GET', '/user/'.$user->id);
         $this->assertEquals(200, $response->status());
-
+        $this->assertEquals($user->id, json_decode($response->getContent())->id);
     }  
 
 
