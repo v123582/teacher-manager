@@ -5,12 +5,22 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class UserControllerTest extends TestCase
 {
     
-    use WithoutMiddleware;
-    use DatabaseMigrations;
-    use DatabaseTransactions;
+    // initDatabase
+    public function setUp()
+    {
+        parent::setUp();
+        $this->initDatabase();
+    }
+
+    // resetDatabase
+    public function tearDown()
+    {
+        $this->resetDatabase();
+        parent::tearDown();
+    }
 
     // get('/users', 'UserController@showuserall');
     public function testShowUserAll()
