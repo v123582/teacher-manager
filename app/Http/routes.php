@@ -29,6 +29,8 @@ Route::get('/', function () {
 Route::get('/auth/facebook', 'UserController@loginWithFacebook');
 Route::get('/auth/logout', 'UserController@loginOut');
 
+Route::get('/users', 'UserController@showuserall');
+Route::get('/user/{id}', 'UserController@showuserone');
 
 Route::get('/file', 'FileController@index');
 Route::get('/files', 'FileController@showAll');

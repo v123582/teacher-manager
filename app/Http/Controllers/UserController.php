@@ -17,8 +17,8 @@ class UserController extends Controller
      */
     public function loginOut()
     {
-        Auth::logout();  
-        return Redirect::to('/');      
+        Auth::logout();
+        return Redirect::to('/');
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
 
             $user = User::where('email', '=', $result['email'])->first();
             if (empty($user)){
-            
+
                 $user = new User;
                 $user->name = $result['name'];
                 $user->email = $result['email'];
@@ -56,7 +56,7 @@ class UserController extends Controller
 
             }
 
-            Auth::login($user); 
+            Auth::login($user);
             if (Auth::check()){
                 return Redirect::to('/');
             }
@@ -75,6 +75,20 @@ class UserController extends Controller
             // return to facebook login url
             return redirect((string)$url);
         }
+    }
+
+    // get('/users', 'UserController@showuserall');
+    public function showUserall()
+    {
+        $users = User::all();
+        return $users;
+    }
+
+    // get('/user/{id}', 'UserController@showuserone');
+    public function showUserone(Request $request, $id)
+    {
+        $user = User::find($id);
+        return $user;
     }
 
 }
