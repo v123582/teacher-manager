@@ -16,7 +16,7 @@ Route::get('/', function () {
     {
         $user = Auth::user();
         $data = array(
-		    'name'  => $user->name,
+		    'loginUser'  => $user->name,
 		    'isAuth'  => 'true',
 		);
         return View::make('index')->with($data);

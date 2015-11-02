@@ -81,7 +81,14 @@ class UserController extends Controller
     public function showUserall()
     {
         $users = User::all();
-        return $users;
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = array(
+            'users' => $users,
+            'loginUser' => $loginUser,
+            'isAuth'  => $isAuth,
+        );        
+        return view('user/users', $data);
     }
 
     // get('/user/{id}', 'UserController@showuserone');
