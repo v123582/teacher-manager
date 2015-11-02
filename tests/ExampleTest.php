@@ -6,6 +6,20 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
+    // initDatabase
+    public function setUp()
+    {
+        parent::setUp();
+        $this->initDatabase();
+    }
+
+    // resetDatabase
+    public function tearDown()
+    {
+        $this->resetDatabase();
+        parent::tearDown();
+    }
+ 
     /**
      * A basic functional test example.
      *
@@ -13,7 +27,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+        $response = $this->call('GET', '/');
+        $this->assertEquals(200, $response->status());
     }
 }
