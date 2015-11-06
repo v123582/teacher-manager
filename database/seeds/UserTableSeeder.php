@@ -18,6 +18,7 @@ class UserTableSeeder extends Seeder
         //     'password' => bcrypt('secret'),
         //     $table->timestamps();
         // ]);
+        DB::table('users')->delete();
         User::create(array(
             'name' => str_random(10),
             'email' => str_random(10).'@gmail.com',
