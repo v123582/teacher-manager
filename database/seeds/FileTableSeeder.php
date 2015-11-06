@@ -14,10 +14,9 @@ class FileTableSeeder extends Seeder
     public function run()
     {
         DB::table('files')->delete();
-        $users = User::all()->lists('id');
-
+        $users = User::all()->lists('id')->toArray();
 		for ($i = 1; $i <= 10; $i++) {
-	        $randdomUser = $users[array_rand(array($users))];
+	        $randdomUser = $users[array_rand($users)];
 	        File::create(array(
 	            'user' => $randdomUser,
 	            'name' => str_random(10),
