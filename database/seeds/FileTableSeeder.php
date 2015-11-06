@@ -15,17 +15,22 @@ class FileTableSeeder extends Seeder
     {
         DB::table('files')->delete();
         $users = User::all()->lists('id');
-        $randdomUser = $users[array_rand(array($users))];
-        File::create(array(
-            'user' => $randdomUser,
-            'name' => str_random(10),
-            'subject' => str_random(10),
-            'chapter' => str_random(10),
-            'grade' => str_random(10),
-            'topic' => str_random(10),
-            'link' => str_random(10),
-            'description' => str_random(10),
-        ));
+
+		for ($i = 1; $i <= 10; $i++) {
+	        $randdomUser = $users[array_rand(array($users))];
+	        File::create(array(
+	            'user' => $randdomUser,
+	            'name' => str_random(10),
+	            'subject' => str_random(10),
+	            'chapter' => str_random(10),
+	            'grade' => str_random(10),
+	            'topic' => str_random(10),
+	            'link' => str_random(10),
+	            'description' => str_random(10),
+	        ));
+		}
+
+
     }
 }
 

@@ -19,10 +19,12 @@ class UserTableSeeder extends Seeder
         //     $table->timestamps();
         // ]);
         DB::table('users')->delete();
-        User::create(array(
-            'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-        ));
+        for ($i = 1; $i <= 10; $i++) {
+            User::create(array(
+                'name' => str_random(10),
+                'email' => str_random(10).'@gmail.com',
+                'password' => bcrypt('secret'),
+            ));
+        }
     }
 }
