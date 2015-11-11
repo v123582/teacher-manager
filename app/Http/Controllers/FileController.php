@@ -18,39 +18,33 @@ class FileController extends Controller {
      */
     public function index()
     {
-        $files = File::all();
-
-        $loginUser = Auth::check() ? Auth::user()->name : null;
-        $isAuth = Auth::check() ? 'true' : 'false';
-        // $data = array(
-        //     'files' => $files,
-        //     'loginUser' => $loginUser,
-        //     'isAuth'  => $isAuth,
-        // );
-        $data = compact("files", "loginUser", "isAuth");
-        //print_r($data);
-        return view('file.index', $data);
+        return redirect('/');
         //return 'hello world';
     }
 
     /**
-     * get('/files', 'FileController@showAll');
+     * get('/files', 'FileController@showFiles');
      * Display a listing of the files.
      * @return Response
      */
-    public function showAll()
+    public function showFiles()
     {
         $files = File::all();
-        return $files;
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact("files", "loginUser", "isAuth");
+        
+        return view('file/showFiles', $data);
     }
 
     /**
-     * get('/file/{id}', 'FileController@show');
+     * get('/file/{id}', 'FileController@showFile');
      * Display the specified file by id.
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function showFile($id)
     {
         $file = File::findOrFail($id);
         return $file;

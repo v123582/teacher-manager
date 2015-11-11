@@ -33,8 +33,8 @@ Route::get('/users', 'UserController@showuserall');
 Route::get('/user/{id}', 'UserController@showuserone');
 
 Route::get('/file', 'FileController@index'); # 暫時回傳首頁
-Route::get('/files', 'FileController@showAll'); # 顯示所有檔案
-Route::get('/file/{id}', 'FileController@show'); # 顯示個別檔案
+Route::get('/files', 'FileController@showFiles'); # 顯示所有檔案
+Route::get('/file/{id}', 'FileController@showFile'); # 顯示個別檔案
 Route::get('/file/create', 'FileController@create'); # 顯示新增檔案表單
 Route::post('/file/create', 'FileController@store'); # 接收新增檔案資料
 Route::get('/file/update/{id}', 'FileController@edit'); # 顯示修改檔案表單
