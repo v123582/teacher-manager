@@ -1,23 +1,36 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\File;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class FileController extends Controller {
 
     /**
      * get('/file', 'FileController@index');
-     * 
+     *
      * @return Response
      */
     public function index()
     {
-        return 'hello world';
+        $files = File::all();
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        // $data = array(
+        //     'files' => $files,
+        //     'loginUser' => $loginUser,
+        //     'isAuth'  => $isAuth,
+        // );
+        $data = compact("files", "loginUser", "isAuth");
+        //print_r($data);
+        return view('file.index', $data);
+        //return 'hello world';
     }
 
     /**
@@ -103,5 +116,11 @@ class FileController extends Controller {
 
     // Route::get('/file/create', 'FileController@create');
     // Route::get('/file/update/{id}', 'FileController@edit');
-
+    public function create()
+    {
+      $loginUser = Auth::check() ? Auth::user()->name : null;
+      $isAuth = Auth::check() ? 'true' : 'false';
+      $data = compact( "loginUser", "isAuth");
+      return view('file.create', $data);
+    }
 }
