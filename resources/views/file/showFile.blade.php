@@ -6,11 +6,13 @@
 
 @section('content')
 
-
-<p>此檔案為 {{ $file-> name }} </a></p>
+<h1>檢視檔案</h1>
 
 <p><button><a href='/file/update/{{ $file-> id }}'>修改</a></button></p>
 <p><button><a href='/file/delete/{{ $file-> id }}'>刪除</a></button></p>
+
+<p>此檔案為 {{ $file-> name }} </a></p>
+
 
 @stop
 

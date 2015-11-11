@@ -6,7 +6,9 @@
 
 @section('content')
 
-<p><button><a href='file/create'>create</a></button></p>
+<h1>所有檔案</h1>
+
+<p><button><a href='file/create'>新增</a></button></p>
 
 @foreach ($files as $file)
   <p>此檔案為 <a href='file/show/{{ $file->id }}'>{{ $file-> name }}</a></p>
