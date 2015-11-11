@@ -47,7 +47,12 @@ class FileController extends Controller {
     public function showFile($id)
     {
         $file = File::findOrFail($id);
-        return $file;
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact("file", "loginUser", "isAuth");
+
+        return view('file/showFile', $data);
     }
 
     /**
