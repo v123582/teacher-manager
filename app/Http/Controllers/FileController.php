@@ -12,17 +12,6 @@ use Illuminate\Http\Request;
 class FileController extends Controller {
 
     /**
-     * get('/file', 'FileController@index');
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        return redirect('/');
-        //return 'hello world';
-    }
-
-    /**
      * get('/files', 'FileController@showFiles');
      * Display a listing of the files.
      * @return Response
@@ -39,7 +28,7 @@ class FileController extends Controller {
     }
 
     /**
-     * get('/file/{id}', 'FileController@showFile');
+     * get('/file/show/{id}', 'FileController@showFile');
      * Display the specified file by id.
      * @param  int  $id
      * @return Response
