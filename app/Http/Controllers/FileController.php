@@ -55,6 +55,16 @@ class FileController extends Controller {
         return view('file/showFile', $data);
     }
 
+    // Route::get('/file/create', 'FileController@create');
+    public function create()
+    {
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact( "loginUser", "isAuth");
+
+        return view('file/create', $data);
+    }
+
     /**
      * post('/file/create', 'FileController@store');
      * Store a newly created file in storage.
@@ -75,6 +85,19 @@ class FileController extends Controller {
         $file->save();
 
         return redirect('/file');
+    }
+
+    // Route::get('/file/update/{id}', 'FileController@edit');
+    public function edit($id)
+    {
+
+        $file = File::findOrFail($id);
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact("file", "loginUser", "isAuth");
+
+        return view('file/edit', $data);
     }
 
     /**
@@ -113,13 +136,4 @@ class FileController extends Controller {
         return redirect('/file');
     }
 
-    // Route::get('/file/create', 'FileController@create');
-    // Route::get('/file/update/{id}', 'FileController@edit');
-    public function create()
-    {
-      $loginUser = Auth::check() ? Auth::user()->name : null;
-      $isAuth = Auth::check() ? 'true' : 'false';
-      $data = compact( "loginUser", "isAuth");
-      return view('file.create', $data);
-    }
 }

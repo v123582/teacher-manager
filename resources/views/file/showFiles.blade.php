@@ -9,7 +9,7 @@
 <p><button><a href='file/create'>create</a></button></p>
 
 @foreach ($files as $file)
-  <p>此檔案為 <a href='file/{{ $file->id }}'>{{ $file-> name }}</a></p>
+  <p>此檔案為 <a href='file/show/{{ $file->id }}'>{{ $file-> name }}</a></p>
 @endforeach
 
 

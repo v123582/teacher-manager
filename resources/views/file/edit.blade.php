@@ -6,8 +6,9 @@
 
 @section('content')
 
-<h1>新增檔案</h1>
+<h1>修改檔案</h1>
 
+{{ $file }}
 
 @stop
 
