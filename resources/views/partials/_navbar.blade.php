@@ -14,7 +14,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
         <li><a href="/users">All Users</a></li>
-        <li><a href="/file">All Files</a></li>
+        <li><a href="/files">All Files</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if ($isAuth === 'false')
