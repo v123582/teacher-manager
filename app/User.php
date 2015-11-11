@@ -36,4 +36,10 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    // 一對多: 一位使用者可能「有很多」檔案
+    public function files()
+    {
+        return $this->hasMany('App\File', 'user');
+    }
 }
