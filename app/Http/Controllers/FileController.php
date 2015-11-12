@@ -23,7 +23,7 @@ class FileController extends Controller {
         $loginUser = Auth::check() ? Auth::user()->name : null;
         $isAuth = Auth::check() ? 'true' : 'false';
         $data = compact("files", "loginUser", "isAuth");
-        
+
         return view('file/showFiles', $data);
     }
 
@@ -73,7 +73,7 @@ class FileController extends Controller {
         $file->description = $request->description;
         $file->save();
 
-        return redirect('/file');
+        return redirect('files');
     }
 
     // Route::get('/file/update/{id}', 'FileController@edit');
@@ -119,10 +119,11 @@ class FileController extends Controller {
      */
     public function destroy(Request $request)
     {
+
         $file = File::findOrFail($request->id);
         $file->delete();
 
-        return redirect('/file');
+        return redirect('files');
     }
 
 }
