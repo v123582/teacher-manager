@@ -7,7 +7,7 @@ a teaching plan manager platform
 * [php]()
 * [php-sqlite]()
 ```
-sudo apt-get install php5-sqlite
+$ sudo apt-get install php5-sqlite # ubuntu
 ```
 * [composer](https://getcomposer.org/)
 * [node.js]()
