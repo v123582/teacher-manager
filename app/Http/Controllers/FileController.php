@@ -117,10 +117,9 @@ class FileController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-
-        $file = File::findOrFail($request->id);
+        $file = File::findOrFail($id);
         $file->delete();
 
         return redirect('files');
