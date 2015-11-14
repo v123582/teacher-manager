@@ -108,7 +108,7 @@ class FileController extends Controller {
         $file->description = $request->description;
         $file->save();
 
-        return redirect('/file');
+        return redirect('files');
     }
 
     /**
