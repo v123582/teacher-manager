@@ -10,9 +10,11 @@
 <!-- {!! Form::open(array('url' => '/file/update', $file->id)) !!} -->
 {!! Form::model($file,array('url' => '/file/update', $file->id, 'method' => 'post'))!!}
 {!! Form::hidden('id', $file->id) !!}
+{!! Form::hidden('user', $loginUser_id) !!}
+
   <div class="form-group">
-      {!! Form::label('user', '使用者名稱') !!}
-      {!! Form::text('user', $file -> user, array('class' => 'form-control')) !!}
+      {!! Form::label('user', '使用者名稱: ') !!}
+      {{$loginUser}}
   </div>
   <div class="form-group">
       {!! Form::label('name', '檔案名稱') !!}

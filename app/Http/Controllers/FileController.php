@@ -48,8 +48,9 @@ class FileController extends Controller {
     public function create()
     {
         $loginUser = Auth::check() ? Auth::user()->name : null;
+        $loginUser_id = Auth::user()->id;
         $isAuth = Auth::check() ? 'true' : 'false';
-        $data = compact( "loginUser", "isAuth");
+        $data = compact( "loginUser", "isAuth", "loginUser_id");
 
         return view('file/create', $data);
     }
@@ -83,8 +84,9 @@ class FileController extends Controller {
         $file = File::findOrFail($id);
 
         $loginUser = Auth::check() ? Auth::user()->name : null;
+        $loginUser_id = Auth::user()->id;
         $isAuth = Auth::check() ? 'true' : 'false';
-        $data = compact("file", "loginUser", "isAuth");
+        $data = compact("file", "loginUser", "isAuth" , "loginUser_id");
 
         return view('file/edit', $data);
     }

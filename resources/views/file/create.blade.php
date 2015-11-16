@@ -10,9 +10,10 @@
 
 
 {!! Form::open(array('url' => '/file/create')) !!}
+{!! Form::hidden('user', $loginUser_id) !!}
   <div class="form-group">
-      {!! Form::label('user', '使用者名稱') !!}
-      {!! Form::text('user', Input::old('user'), array('class' => 'form-control')) !!}
+      {!! Form::label('user', '使用者名稱: ') !!}
+      {{$loginUser}}
   </div>
   <div class="form-group">
       {!! Form::label('name', '檔案名稱') !!}
