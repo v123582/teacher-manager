@@ -1,46 +1,58 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\File;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class FileController extends Controller {
 
     /**
-     * get('/file', 'FileController@index');
-     * 
-     * @return Response
-     */
-    public function index()
-    {
-        return 'hello world';
-    }
-
-    /**
-     * get('/files', 'FileController@showAll');
+     * get('/files', 'FileController@showFiles');
      * Display a listing of the files.
      * @return Response
      */
-    public function showAll()
+    public function showFiles()
     {
         $files = File::all();
-        return $files;
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact("files", "loginUser", "isAuth");
+
+        return view('file/showFiles', $data);
     }
 
     /**
-     * get('/file/{id}', 'FileController@show');
+     * get('/file/show/{id}', 'FileController@showFile');
      * Display the specified file by id.
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function showFile($id)
     {
         $file = File::findOrFail($id);
-        return $file;
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact("file", "loginUser", "isAuth");
+
+        return view('file/showFile', $data);
+    }
+
+    // Route::get('/file/create', 'FileController@create');
+    public function create()
+    {
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $loginUser_id = Auth::user()->id;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact( "loginUser", "isAuth", "loginUser_id");
+
+        return view('file/create', $data);
     }
 
     /**
@@ -62,7 +74,21 @@ class FileController extends Controller {
         $file->description = $request->description;
         $file->save();
 
-        return redirect('/file');
+        return redirect('files');
+    }
+
+    // Route::get('/file/update/{id}', 'FileController@edit');
+    public function edit($id)
+    {
+
+        $file = File::findOrFail($id);
+
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $loginUser_id = Auth::user()->id;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = compact("file", "loginUser", "isAuth" , "loginUser_id");
+
+        return view('file/edit', $data);
     }
 
     /**
@@ -84,7 +110,7 @@ class FileController extends Controller {
         $file->description = $request->description;
         $file->save();
 
-        return redirect('/file');
+        return redirect('files');
     }
 
     /**
@@ -93,15 +119,12 @@ class FileController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $file = File::findOrFail($request->id);
+        $file = File::findOrFail($id);
         $file->delete();
 
-        return redirect('/file');
+        return redirect('files');
     }
-
-    // Route::get('/file/create', 'FileController@create');
-    // Route::get('/file/update/{id}', 'FileController@edit');
 
 }
