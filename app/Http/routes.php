@@ -16,7 +16,7 @@ Route::get('/', function () {
     {
         $user = Auth::user();
         $data = array(
-		    'name'  => $user->name,
+		    'loginUser'  => $user->name,
 		    'isAuth'  => 'true',
 		);
         return View::make('index')->with($data);
@@ -28,3 +28,15 @@ Route::get('/', function () {
 
 Route::get('/auth/facebook', 'UserController@loginWithFacebook');
 Route::get('/auth/logout', 'UserController@loginOut');
+
+Route::get('/users', 'UserController@showuserall');
+Route::get('/user/{id}', 'UserController@showuserone');
+
+Route::get('/file', 'FileController@index');
+Route::get('/files', 'FileController@showAll');
+Route::get('/file/{id}', 'FileController@show');
+Route::get('/file/create', 'FileController@create');
+Route::post('/file/create', 'FileController@store');
+Route::get('/file/update/{id}', 'FileController@edit');
+Route::post('/file/update', 'FileController@update');
+Route::post('/file/delete', 'FileController@destroy');

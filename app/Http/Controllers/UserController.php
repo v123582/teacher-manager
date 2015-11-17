@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Redirect;
 use Auth;
+use App\User;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -17,8 +17,8 @@ class UserController extends Controller
      */
     public function loginOut()
     {
-        Auth::logout();  
-        return Redirect::to('/');      
+        Auth::logout();
+        return Redirect::to('/');
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
 
             $user = User::where('email', '=', $result['email'])->first();
             if (empty($user)){
-            
+
                 $user = new User;
                 $user->name = $result['name'];
                 $user->email = $result['email'];
@@ -56,7 +56,7 @@ class UserController extends Controller
 
             }
 
-            Auth::login($user); 
+            Auth::login($user);
             if (Auth::check()){
                 return Redirect::to('/');
             }
@@ -75,6 +75,27 @@ class UserController extends Controller
             // return to facebook login url
             return redirect((string)$url);
         }
+    }
+
+    // get('/users', 'UserController@showuserall');
+    public function showUserall()
+    {
+        $users = User::all();
+        $loginUser = Auth::check() ? Auth::user()->name : null;
+        $isAuth = Auth::check() ? 'true' : 'false';
+        $data = array(
+            'users' => $users,
+            'loginUser' => $loginUser,
+            'isAuth'  => $isAuth,
+        );        
+        return view('user/users', $data);
+    }
+
+    // get('/user/{id}', 'UserController@showuserone');
+    public function showUserone(Request $request, $id)
+    {
+        $user = User::find($id);
+        return $user;
     }
 
 }
