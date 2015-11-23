@@ -8,7 +8,7 @@
     <title></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bower_compoents/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_compoents/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
   </head>
 

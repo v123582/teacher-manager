@@ -12,18 +12,18 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/users">All Users</a></li>
+        <li><a href="/files">All Files</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-  @if ($isAuth === 'false')
+        @if ($isAuth === 'false')
           <li><a href="#" id="a_file_create">上傳</a><li>
           <li><a href="/auth/facebook">登入</a><li>
         @endif
         @if ($isAuth === 'true')
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ $name }} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ $loginUser }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>

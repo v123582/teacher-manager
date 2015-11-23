@@ -21,7 +21,7 @@ class CreateFilesTable extends Migration
             $table->string('grade'); # 年級
             $table->string('topic'); # 主題
             $table->string('link'); # 網址
-            $table->text('description'); # 敘述   
+            $table->text('description'); # 敘述
             $table->timestamps();
         });
     }
