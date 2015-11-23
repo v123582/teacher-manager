@@ -4,6 +4,7 @@ $(document).ready(function(){
 	function file(){
 		// 建構子
 		_setListen();
+		$("#file_create_modal .input-file").val("");
 
 		function _setListen(){
 			$("#header_navbar").on("click", "#a_file_create", function(){ _clickAFileCreate(); 				});
@@ -11,11 +12,12 @@ $(document).ready(function(){
 		}
 		// 監聽event
 		function _clickAFileCreate(){
+
 			$("#file_create_modal").modal("show");
 		}
 		function _clickBtnFile( $btn ){
-			var $form = $btn.parents("form");	
-			var file_name = $form.find(".input-file").val().trim();
+			var $form  		= $btn.parents("form");	
+			var file_name  	= $form.find(".input-file").val().trim();console.log(file_name, $form);
 
 			// 判斷使用者是否有選擇上傳的檔案
 			if( file_name!="" || file_name ){
@@ -40,7 +42,7 @@ $(document).ready(function(){
 		 	// 監聽上傳進度	
 			request.upload.addEventListener('progress', function(e){
 				var percent = Math.round(e.loaded/e.total *100); 
-				console.log("上傳：",percent);
+				console.log("上傳：", percent);
 				
 				//$form.find(".file-loaded").html( Math.round(e.loaded/10000)/100 ); // 已上傳Mb
 				//$form.find(".file-total" ).html( Math.round(e.total /10000)/100 ); // 實際Mb
@@ -66,8 +68,8 @@ $(document).ready(function(){
 		  	// });	
 		  	
 		  	// 送出	
-			request.open("post", "file/create");// open("post||get", "url路徑" )
-			request.send(form_data);
+			request.open("post", "file/fileUpload");// open("post||get", "url路徑" )
+			request.send(form_data);console.log(request);
 		}
 	}
 });

@@ -10,8 +10,8 @@
                 
                 <div class="row row-file">
                     <div class="col-xs-12">
-                        <form>
-                            <input type="file" class="input-file" />
+                        <form enctype="multipart/form-data" >
+                            <input type="file" class="input-file" name="file" />
                             <div class="progress" style="margin: 10px 0px;">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
                                     <span class="progress-num">0%</span>

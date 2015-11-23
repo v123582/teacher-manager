@@ -37,11 +37,11 @@ class FileController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
-    {
-        $file = File::findOrFail($id);
-        return $file;
-    }
+    // public function show($id)
+    // {
+    //     $file = File::findOrFail($id);
+    //     return $file;
+    // }
 
     /**
      * post('/file/create', 'FileController@store');
@@ -104,4 +104,28 @@ class FileController extends Controller {
     // Route::get('/file/create', 'FileController@create');
     // Route::get('/file/update/{id}', 'FileController@edit');
 
+    public function fileUpload()
+    {
+        $file           = Input::file('file');
+        
+        $file_name      = $file->getClientOriginalName();       
+        $file_size      = $file->getSize();
+        $file_extension = $file->getClientOriginalExtension();
+        $file_mime      = $file->getMimeType();
+        $file_tmp_name  = strval(time()).str_random(5).'.'.$file_extension;
+
+        $destination_path   = public_path().'/user-file/';
+        $file_path          = $destination_path.$file_tmp_name;
+        
+        if( Input::hasFile('file') ){
+            $upload_resault = $file->move($destination_path, $file_tmp_name);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public function test(){
+        return view('test.file_test');
+    }
 }

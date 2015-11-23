@@ -34,9 +34,12 @@ Route::get( '/user/{id}'        , 'UserController@showuserone');
 
 Route::get( '/file'             , 'FileController@index');
 Route::get( '/files'            , 'FileController@showAll');
-Route::get( '/file/{id}'        , 'FileController@show');
+//Route::get( '/file/{id}'        , 'FileController@show');
 Route::get( '/file/create'      , 'FileController@create');
 Route::post('/file/create'      , 'FileController@store');
 Route::get( '/file/update/{id}' , 'FileController@edit');
 Route::post('/file/update'      , 'FileController@update');
 Route::post('/file/delete'      , 'FileController@destroy');
+Route::post('/file/fileUpload'  , 'FileController@fileUpload');// 上傳檔案
+Route::get( '/file/test'        , 'FileController@test');
+
