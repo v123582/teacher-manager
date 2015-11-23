@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Input;
+
 class FileController extends Controller {
 
     /**
@@ -119,10 +121,10 @@ class FileController extends Controller {
         
         if( Input::hasFile('file') ){
             $upload_resault = $file->move($destination_path, $file_tmp_name);
-            return true;
+            return 'true';
         }
         else{
-            return false;
+            return 'false';
         }
     }
     public function test(){
