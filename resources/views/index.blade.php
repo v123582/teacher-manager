@@ -25,6 +25,12 @@
 @section("footer")
   @include('partials/_footer')
 @stop
+  
+@section("js_include")
+  {{-- 檔案上傳js --}}
+   <script src="josh-ui/file_create.js"></script>
+@stop   
+ 
 
 
 

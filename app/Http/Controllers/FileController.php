@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Input;
 
 class FileController extends Controller {
 
@@ -127,4 +128,29 @@ class FileController extends Controller {
         return redirect('files');
     }
 
+
+    // Route::get('/file/create', 'FileController@create');
+    // Route::get('/file/update/{id}', 'FileController@edit');
+
+    public function fileUpload()
+    {
+        $file           = Input::file('file');
+        
+        $file_name      = $file->getClientOriginalName();       
+        $file_size      = $file->getSize();
+        $file_extension = $file->getClientOriginalExtension();
+        $file_mime      = $file->getMimeType();
+        $file_tmp_name  = strval(time()).str_random(5).'.'.$file_extension;
+
+        $destination_path   = public_path().'/user-file/';
+        $file_path          = $destination_path.$file_tmp_name;
+        
+        if( Input::hasFile('file') ){
+            $upload_resault = $file->move($destination_path, $file_tmp_name);
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
 }

@@ -5,3 +5,5 @@ Homestead.json
 .env
 composer.lock
 /public/bower_compoents
+/public/user-file
+
