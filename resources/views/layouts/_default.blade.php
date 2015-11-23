@@ -23,8 +23,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="bower_compoents/jquery/dist/jquery.min.js"></script>
-    <script src="bower_compoents/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_compoents/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_compoents/bootstrap/dist/js/bootstrap.min.js"></script>
 
     @yield("js_include")
 

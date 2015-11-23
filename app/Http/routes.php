@@ -26,11 +26,11 @@ Route::get('/', function () {
     }
 });
 
-Route::get( '/auth/facebook'    , 'UserController@loginWithFacebook');
-Route::get( '/auth/logout'      , 'UserController@loginOut');
+Route::get('/auth/facebook', 'UserController@loginWithFacebook');
+Route::get('/auth/logout', 'UserController@loginOut');
 
-Route::get( '/users'            , 'UserController@showuserall');
-Route::get( '/user/{id}'        , 'UserController@showuserone');
+Route::get('/users'            , 'UserController@showuserall');
+Route::get('/user/{id}'        , 'UserController@showuserone');
 
 Route::get('/files', 'FileController@showFiles'); # 顯示所有檔案
 Route::get('/file/create', 'FileController@create'); # 顯示新增檔案表單
