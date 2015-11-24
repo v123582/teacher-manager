@@ -7,7 +7,7 @@ $(document).ready(function(){
 		$("#file_create_modal .input-file").val("");
 
 		function _setListen(){
-			$("#header_navbar").on("click", "#a_file_create", function(){ _clickAFileCreate(); 				});
+			$("#file_create_div").on("click", "#a_file_create", function(){ _clickAFileCreate(); 				});
 			$("#file_create_modal").on("click", ".btn-file" , function(){ _clickBtnFile( $(this) ); 		});
 		}
 		// 監聽event
@@ -62,14 +62,34 @@ $(document).ready(function(){
 		  	// $form.on("click", ".btn-cancel", function(){
 		  	// 	request.abort();
 
-		  	// 	$form.find(".progress-bar")
+		  		$form.find(".progress-bar")
 					// .removeClass("progress-bar-info")
 					// .addClass("progress-bar-danger");
 		  	// });	
 		  	
 		  	// 送出	
-			request.open("post", "file/fileUpload");// open("post||get", "url路徑" )
-			request.send(form_data);console.log(request);
+			// request.open("post", "/file/fileUpload");// open("post||get", "url路徑" )
+			// request.send(form_data);
+			// console.log(request);
+			request.open("POST", '/file/fileUpload', true);
+			request.onreadystatechange = function() {
+			  if (request.readyState === 4)  { 
+			    $("#link").val(request.responseText);
+			  }
+			};
+			request.send(form_data);
+			// $.ajax({
+			// 	url:"/file/fileUpload",                                                              
+			// 	data: form_data,  
+			// 	type : "POST",
+			// 	contentType: false,
+   //  			processData: false,                                                           
+			// 	success:function(response){                                                            
+			// 		console.log(response);
+			// 		// $("#link").val(response);
+			// 		console.log(response)
+			//     }
+			// }); 
 		}
 	}
 });

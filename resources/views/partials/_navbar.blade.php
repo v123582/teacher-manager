@@ -1,5 +1,5 @@
 <!-- Static navbar -->
-<nav class="navbar navbar-default navbar-static-top" id="header_navbar">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -18,7 +18,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if ($isAuth === 'false')
-          <li><a href="#" id="a_file_create">上傳</a><li>
+          
           <li><a href="/auth/facebook">登入</a><li>
         @endif
         @if ($isAuth === 'true')
@@ -39,4 +39,4 @@
   </div>
 </nav>
 
-@include("partials._file_create_modal")
+
