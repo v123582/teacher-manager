@@ -144,7 +144,7 @@ class FileController extends Controller {
 
         $destination_path   = public_path().'/user-file/';
         $file_path          = $destination_path.$file_tmp_name;
-        $file_url = 'http://localhost:8000/user-file/'.$file_tmp_name;
+        $file_url = '/user-file/'.$file_tmp_name;
         
         if( Input::hasFile('file') ){
             $upload_resault = $file->move($destination_path, $file_tmp_name);

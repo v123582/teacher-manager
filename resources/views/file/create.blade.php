@@ -38,6 +38,7 @@
         <div class="form-group">
             <div id="file_create_div">
                 <a href="#" id="a_file_create">上傳</a>
+                <img id="previewImg" src="">
             </div>
             {!! Form::label('link', '網址') !!}
             {!! Form::text('link', Input::old('link'), array('class' => 'form-control')) !!}
