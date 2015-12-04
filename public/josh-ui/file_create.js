@@ -7,8 +7,18 @@ $(document).ready(function(){
 		$("#file_create_modal .input-file").val("");
 
 		function _setListen(){
-			$("#file_create_div").on("click", "#a_file_create", function(){ _clickAFileCreate(); 				});
-			$("#file_create_modal").on("click", ".btn-file" , function(){ _clickBtnFile( $(this) ); 		});
+			$("#file_create_div").on("click", "#a_file_create", function(){ _clickAFileCreate(); });
+			$("#file_create_modal").on("click", ".btn-file" , function(){ _clickBtnFile( $(this) ); });
+			$("#file_create_modal").on("click", ".input-file" , function(){ _fileCreateInit($(this).parents("form")); });
+		}
+		function _fileCreateInit($form){
+			// 初始化進度條
+			$form.find(".progress-bar").removeClass("progress-bar-danger").removeClass("progress-bar-success").addClass("progress-bar");
+			$form.find(".progress-bar").css("width", "0%");
+			$form.find(".progress-num").html( 0+"%" );
+			// disable上傳按鈕
+			$form.find(".btn-file").prop("disable", true);
+			$form.find(".btn-file").toggle(true);
 		}
 		// 監聽event
 		function _clickAFileCreate(){
@@ -34,12 +44,9 @@ $(document).ready(function(){
 			var request   = new XMLHttpRequest();
 
 		  	// 初始化進度條
-		  	$form.find(".progress-bar").removeClass("progress-bar-danger").addClass("progress-bar-info");
-			$form.find(".progress-bar").css("width", "0%");
-			// disable上傳按鈕
-			$form.find(".btn-file").prop("disable", true);
-
-		 	// 監聽上傳進度
+		  	_fileCreateInit($form)
+		 	
+		 	// 監聽上傳進度	
 			request.upload.addEventListener('progress', function(e){
 				var percent = Math.round(e.loaded/e.total *100);
 				console.log("上傳：", percent);
@@ -55,7 +62,8 @@ $(document).ready(function(){
 				console.log("完成：", e);
 
 				$form.find(".progress-bar").removeClass("progress-bar-info").addClass("progress-bar-success");
-				$form.find(".btn-file").remove();
+				// $form.find(".btn-file").remove();
+				 $form.find(".btn-file").toggle(false);
 			});
 
 		  	// 監聽取消btn
@@ -75,7 +83,7 @@ $(document).ready(function(){
 			request.onreadystatechange = function() {
 			  if (request.readyState === 4)  {
 			    $("#link").val(request.responseText);
-					$("#showfile").html('<embed src='+file_name+' height="400" width="400">');
+			    $("#previewImg").attr("src", request.responseText);
 			  }
 			};
 
