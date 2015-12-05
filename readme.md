@@ -22,7 +22,7 @@ $ cp .env.example .env
 $ php artisan key:generate # check your php app key in .env file
 $ touch database/database.sqlite
 $ php artisan migrate
-$ php artisan db: seed
+$ php artisan db:seed
 ```
 
 ## how to start
