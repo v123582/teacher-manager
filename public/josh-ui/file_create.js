@@ -45,8 +45,8 @@ $(document).ready(function(){
 
 		  	// 初始化進度條
 		  	_fileCreateInit($form)
-		 	
-		 	// 監聽上傳進度	
+
+		 	// 監聽上傳進度
 			request.upload.addEventListener('progress', function(e){
 				var percent = Math.round(e.loaded/e.total *100);
 				console.log("上傳：", percent);
@@ -83,7 +83,7 @@ $(document).ready(function(){
 			request.onreadystatechange = function() {
 			  if (request.readyState === 4)  {
 			    $("#link").val(request.responseText);
-			    $("#previewImg").attr("src", request.responseText);
+					$('#show_upload').html("<embed src='"+request.responseText+"'width='600' height='300' ></embed>");
 			  }
 			};
 
