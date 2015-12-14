@@ -38,7 +38,10 @@
         <div class="form-group">
             <div id="file_create_div">
                 <a href="#" id="a_file_create">上傳</a>
+                <img id="previewImg" src="">
             </div>
+            <div id="showfile"></div>
+            {!! Form::hidden('link') !!}
             {!! Form::label('link', '網址') !!}
             {!! Form::text('link', Input::old('link'), array('class' => 'form-control')) !!}
         </div>
@@ -62,4 +65,4 @@
 @section("js_include")
   {{-- 檔案上傳js --}}
    <script src="/josh-ui/file_create.js"></script>
-@stop   
+@stop
