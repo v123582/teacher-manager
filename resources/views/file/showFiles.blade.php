@@ -5,16 +5,34 @@
 @stop
 
 @section('content')
-
-<h1>所有檔案</h1>
-
-<p><button><a href='file/create'>新增</a></button></p>
-
+<div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">All Files
+            <small>所有檔案</small>
+        </h1>
+    </div>
+</div>
 @foreach ($files as $file)
-  <p>此檔案為 <a href='file/show/{{ $file->id }}'>{{ $file-> name }}</a></p>
+  @if ($file->id %4 === 1)
+    <div class="row">
+  @endif
+
+  <div class="col-md-3 portfolio-item" style='margin-bottom:20px;'>
+      <a href="file/show/{{ $file->id }}">
+              <center>{{ $file-> name }}
+              <center>{!! Html::image( $file-> link ,  'no picture !' ,array( 'width' => 70, 'height' => 70 )) !!}
+      </a>
+  </div>
+
+  @if ($file->id %4 === 0)
+    </div>
+  @endif
+
 @endforeach
+</div>
 
-
+<button class="btn btn-default" style="margin-left:48%;margin-top:10px;"><a href='file/create'>新增</a></button>
 @stop
 
 @section("footer")
