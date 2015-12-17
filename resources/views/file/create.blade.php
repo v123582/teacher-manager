@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-
+<div class="container">
 <h1>新增檔案</h1>
 
 
@@ -49,7 +49,7 @@
         {!! Form::submit('Create the file!', array('class' => 'btn btn-primary')) !!}
 
     {!! Form::close() !!}
-
+</div>
 @include("partials._file_create_modal")
 @stop
 

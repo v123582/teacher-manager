@@ -17,7 +17,7 @@
     @yield("navbar")
 
     @yield("content")
-    
+
     @yield("footer")
 
     <!-- Bootstrap core JavaScript
