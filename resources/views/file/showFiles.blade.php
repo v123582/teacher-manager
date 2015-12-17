@@ -13,8 +13,9 @@
         </h1>
     </div>
 </div>
+<?php $count = 1 ?>
 @foreach ($files as $file)
-  @if ($file->id %4 === 1)
+  @if ($count %4 === 1)
     <div class="row">
   @endif
 
@@ -25,10 +26,10 @@
       </a>
   </div>
 
-  @if ($file->id %4 === 0)
+  @if ($count %4 === 0)
     </div>
   @endif
-
+<?php $count += 1 ?>
 @endforeach
 </div>
 

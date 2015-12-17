@@ -14,8 +14,9 @@
         </h1>
     </div>
 </div>
+<?php $count = 1 ?>
 @foreach ($users as $user)
-  @if ($user->id %6 === 1)
+  @if ($count %6 === 1)
     <div class="row">
   @endif
 
@@ -25,10 +26,10 @@
       </a>
   </div>
 
-  @if ($user->id %6 === 0)
+  @if ($count %6 === 0)
     </div>
   @endif
-
+<?php $count += 1 ?>
 @endforeach
 </div>
 @stop

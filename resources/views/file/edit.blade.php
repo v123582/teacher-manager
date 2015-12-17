@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-
+<div class="container">
 <h1>修改檔案</h1>
 <!-- {!! Form::open(array('url' => '/file/update', $file->id)) !!} -->
 {!! Form::model($file,array('url' => '/file/update', $file->id, 'method' => 'post'))!!}
@@ -46,6 +46,8 @@
   </div>
   {!! Form::submit('update the file!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}
+</div>
+<br>
 @stop
 
 @section("footer")
